@@ -1,5 +1,5 @@
 "use client";
-import { LayoutDashboard, Megaphone, PlusCircle, ExternalLink, BarChart2, Layers, ChevronRight } from "lucide-react";
+import { LayoutDashboard, Megaphone, PlusCircle, ExternalLink, BarChart2, Layers, ChevronRight, Zap } from "lucide-react";
 import { AD_ACCOUNTS, getAccountById } from "@/lib/fbClient";
 import type { Page } from "@/app/page";
 
@@ -11,11 +11,12 @@ interface Props {
 }
 
 const NAV = [
-  { id: "dashboard", label: "Overview",   icon: LayoutDashboard },
-  { id: "campaigns", label: "Campaigns",  icon: Megaphone },
-  { id: "adsets",    label: "Ad Sets",    icon: Layers },
-  { id: "insights",  label: "Insights",   icon: BarChart2 },
-  { id: "create",    label: "Create Ad",  icon: PlusCircle },
+  { id: "dashboard", label: "Overview",      icon: LayoutDashboard },
+  { id: "campaigns", label: "Campaigns",     icon: Megaphone },
+  { id: "adsets",    label: "Ad Sets",       icon: Layers },
+  { id: "insights",  label: "Insights",      icon: BarChart2 },
+  { id: "boost",     label: "Boost Reel",    icon: Zap },
+  { id: "create",    label: "Create Ad",     icon: PlusCircle },
 ] as const;
 
 export default function Sidebar({ page, setPage, accountId, setAccountId }: Props) {
@@ -61,6 +62,7 @@ export default function Sidebar({ page, setPage, accountId, setAccountId }: Prop
             <Icon size={15} />
             {label}
             {id === "create" && <span style={{ marginLeft: "auto", fontSize: 9, background: "var(--accent)", color: "#fff", borderRadius: 4, padding: "1px 5px", fontWeight: 800 }}>NEW</span>}
+            {id === "boost" && <span style={{ marginLeft: "auto", fontSize: 9, background: "linear-gradient(135deg,#f59e0b,#ef4444)", color: "#fff", borderRadius: 4, padding: "1px 5px", fontWeight: 800 }}>⚡</span>}
           </button>
         ))}
       </div>
