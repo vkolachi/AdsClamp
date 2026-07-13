@@ -11,12 +11,12 @@ interface Reel {
 }
 
 const CTA_OPTIONS = [
-  { value: "LEARN_MORE",    label: "Learn More" },
-  { value: "SHOP_NOW",      label: "Shop Now" },
-  { value: "SIGN_UP",       label: "Sign Up" },
-  { value: "SUBSCRIBE",     label: "Subscribe" },
-  { value: "GET_OFFER",     label: "Get Offer" },
-  { value: "BOOK_NOW",      label: "Book Now" },
+  { value: "JOIN_GROUP",    label: "Join Now" },
+  { value: "LEARN_MORE",   label: "Learn More" },
+  { value: "SUBSCRIBE",    label: "Subscribe" },
+  { value: "SIGN_UP",      label: "Sign Up" },
+  { value: "GET_OFFER",    label: "Get Offer" },
+  { value: "SHOP_NOW",     label: "Shop Now" },
 ];
 
 const INTERESTS_PRESETS = [
@@ -44,7 +44,7 @@ export default function BoostReel({ accountId, setPage }: { accountId: string; s
     ageMin: "18",
     ageMax: "45",
     destinationUrl: account.url,
-    callToAction: "LEARN_MORE",
+    callToAction: "JOIN_GROUP",
     objective: "OUTCOME_TRAFFIC",
   });
 
@@ -239,7 +239,22 @@ export default function BoostReel({ accountId, setPage }: { accountId: string; s
 
               <div className="form-group">
                 <label className="form-label">Destination URL</label>
-                <input className="form-input" type="url" placeholder="https://dealclamp.com" value={form.destinationUrl} onChange={e => set("destinationUrl", e.target.value)} />
+                {/* Quick select */}
+                <div style={{ display: "flex", gap: 6, marginBottom: 8, flexWrap: "wrap" }}>
+                  {[
+                    { label: "🔗 Join Page",       url: account.url },
+                    { label: "💬 WhatsApp Channel", url: `${account.url}?ref=whatsapp` },
+                    { label: "✈️ Telegram",         url: `${account.url}?ref=telegram` },
+                  ].map(q => (
+                    <button key={q.label} type="button"
+                      onClick={() => set("destinationUrl", q.url)}
+                      className="btn btn-ghost btn-sm"
+                      style={{ fontSize: 10, opacity: form.destinationUrl === q.url ? 1 : 0.55, borderColor: form.destinationUrl === q.url ? account.color : undefined, color: form.destinationUrl === q.url ? account.color : undefined }}>
+                      {q.label}
+                    </button>
+                  ))}
+                </div>
+                <input className="form-input" type="url" placeholder={account.url} value={form.destinationUrl} onChange={e => set("destinationUrl", e.target.value)} />
               </div>
 
               <div className="form-group">
