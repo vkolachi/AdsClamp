@@ -120,6 +120,7 @@ input, select, textarea { font-family: inherit; }
 
 /* Stat cards */
 .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.stat-grid-5 { grid-template-columns: repeat(5, 1fr); }
 .stat-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 12px; padding: 16px 18px;
@@ -231,6 +232,43 @@ input, select, textarea { font-family: inherit; }
 .empty-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .empty-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
 
+/* Brand buttons */
+.brand-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 10px;
+  background: var(--surface2); border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.15s; width: 100%;
+}
+.brand-btn:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.03); }
+.brand-btn-active { background: rgba(255,255,255,0.04); }
+.brand-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeUp 0.2s ease;
+}
+.modal {
+  background: var(--surface); border: 1px solid var(--border-hover);
+  border-radius: 14px; width: 100%; max-width: 480px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 18px 20px 14px; border-bottom: 1px solid var(--border);
+}
+.modal-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.modal-sub { font-size: 10px; color: var(--text-muted); margin-top: 3px; font-family: monospace; }
+.modal-body { padding: 18px 20px; }
+.modal-footer {
+  display: flex; justify-content: flex-end; gap: 8px;
+  padding: 14px 20px; border-top: 1px solid var(--border);
+  background: var(--surface2);
+}
+
 /* Toast */
 .toast {
   position: fixed; bottom: 20px; right: 20px; z-index: 9999;
@@ -239,6 +277,7 @@ input, select, textarea { font-family: inherit; }
   font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.5); animation: fadeUp 0.3s ease;
 }
+.toast-error { border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.1); color: var(--red); }
 
 /* Responsive */
 @media (max-width: 900px) {
