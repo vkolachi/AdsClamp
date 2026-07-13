@@ -7,9 +7,10 @@ import CreateCampaign from "@/components/CreateCampaign";
 import AdSets from "@/components/AdSets";
 import Insights from "@/components/Insights";
 import BoostReel from "@/components/BoostReel";
+import Billing from "@/components/Billing";
 import { AD_ACCOUNTS } from "@/lib/fbClient";
 
-export type Page = "dashboard" | "campaigns" | "create" | "adsets" | "insights" | "boost";
+export type Page = "dashboard" | "campaigns" | "create" | "adsets" | "insights" | "boost" | "billing";
 
 export default function Home() {
   const [page, setPage] = useState<Page>("dashboard");
@@ -25,6 +26,7 @@ export default function Home() {
         {page === "adsets"     && <AdSets accountId={accountId} setPage={setPage} />}
         {page === "insights"   && <Insights accountId={accountId} setPage={setPage} />}
         {page === "boost"     && <BoostReel accountId={accountId} setPage={setPage} />}
+        {page === "billing"    && <Billing setPage={setPage} />}
       </div>
     </div>
   );

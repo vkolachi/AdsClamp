@@ -1,5 +1,5 @@
 "use client";
-import { LayoutDashboard, Megaphone, PlusCircle, ExternalLink, BarChart2, Layers, ChevronRight, Zap } from "lucide-react";
+import { LayoutDashboard, Megaphone, PlusCircle, ExternalLink, BarChart2, Layers, ChevronRight, Zap, CreditCard } from "lucide-react";
 import { AD_ACCOUNTS, getAccountById } from "@/lib/fbClient";
 import type { Page } from "@/app/page";
 
@@ -16,6 +16,7 @@ const NAV = [
   { id: "adsets",    label: "Ad Sets",       icon: Layers },
   { id: "insights",  label: "Insights",      icon: BarChart2 },
   { id: "boost",     label: "Boost Reel",    icon: Zap },
+  { id: "billing",   label: "Billing & Funds", icon: CreditCard },
   { id: "create",    label: "Create Ad",     icon: PlusCircle },
 ] as const;
 
